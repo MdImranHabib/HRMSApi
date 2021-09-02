@@ -23,7 +23,7 @@ namespace HRMSApi
             services.AddControllers();
 
             services.AddDbContext<HRMSDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection1")));
 
             services.AddCors();
         }
@@ -32,7 +32,7 @@ namespace HRMSApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options =>
-            options.WithOrigins("http://localhost:3000")
+            options.WithOrigins("http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod());
 

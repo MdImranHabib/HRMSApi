@@ -47,10 +47,10 @@ namespace HRMSApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFlat(int id, Flat flat)
         {
-            //if (id != flat.Id)
-            //{
-            //    return BadRequest();
-            //}
+            if (id != flat.Id)
+            {
+                return BadRequest();
+            }
 
             flat.Id = id;
 
