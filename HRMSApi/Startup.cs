@@ -23,7 +23,7 @@ namespace HRMSApi
             services.AddControllers();
 
             services.AddDbContext<HRMSDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection1")));
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddCors();
         }

@@ -4,14 +4,16 @@ using HRMSApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HRMSApi.Migrations
 {
     [DbContext(typeof(HRMSDBContext))]
-    partial class HRMSDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210922171342_created ResidentFlat class")]
+    partial class createdResidentFlatclass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,53 +55,6 @@ namespace HRMSApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Flats");
-                });
-
-            modelBuilder.Entity("HRMSApi.Models.Rent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("ElectricBill")
-                        .HasColumnType("float");
-
-                    b.Property<int>("FlatId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("FlatRent")
-                        .HasColumnType("float");
-
-                    b.Property<double>("GasBill")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Paid")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Remarks")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("RentMonth")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
-
-                    b.Property<double>("TotalBill")
-                        .HasColumnType("float");
-
-                    b.Property<double>("WaterBill")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FlatId");
-
-                    b.ToTable("Rents");
                 });
 
             modelBuilder.Entity("HRMSApi.Models.Resident", b =>
@@ -174,15 +129,6 @@ namespace HRMSApi.Migrations
                     b.HasIndex("ResidentId");
 
                     b.ToTable("ResidentFlats");
-                });
-
-            modelBuilder.Entity("HRMSApi.Models.Rent", b =>
-                {
-                    b.HasOne("HRMSApi.Models.Flat", "Flat")
-                        .WithMany()
-                        .HasForeignKey("FlatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("HRMSApi.Models.ResidentFlat", b =>
