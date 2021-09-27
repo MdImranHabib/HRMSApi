@@ -35,7 +35,7 @@ namespace HRMSApi.Models
         [Required]
         public double Paid { get; set; }
 
-        [Required]       
+        [Required]
         public DateTime Date { get; set; }
 
         [StringLength(200)]
