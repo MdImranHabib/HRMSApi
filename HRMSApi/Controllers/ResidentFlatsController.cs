@@ -24,14 +24,21 @@ namespace HRMSApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ResidentFlat>>> GetResidentFlat()
         {
-            return await _context.ResidentFlats.ToListAsync();
+            return await _context.ResidentFlats
+                .Include(rf => rf.Flat)
+                .Include(rf => rf.Resident)
+                .ToListAsync();
         }
 
         // GET: api/ResidentFlats/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ResidentFlat>> GetResidentFlat(int id)
         {
-            var residentFlat = await _context.ResidentFlats.FindAsync(id);
+            //var residentFlat = await _context.ResidentFlats.FindAsync(id);
+            var residentFlat = await _context.ResidentFlats
+                .Include(rf => rf.Flat)
+                .Include(rf => rf.Resident)
+                .SingleOrDefaultAsync(rf => rf.Id == id);
 
             if (residentFlat == null)
             {
