@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20211003055220_created Identity classes.cs" />
+    <Compile Remove="Migrations\20211003055220_created Identity classes.Designer.cs" />
+    <Compile Remove="Migrations\20211003061134_created Identity classes.cs" />
+    <Compile Remove="Migrations\20211003061134_created Identity classes.Designer.cs" />
+    <Compile Remove="Migrations\20211003061909_created Identity classes.cs" />
+    <Compile Remove="Migrations\20211003061909_created Identity classes.Designer.cs" />
+    <Compile Remove="Migrations\20211003063131_created Identity classes.cs" />
+    <Compile Remove="Migrations\20211003063131_created Identity classes.Designer.cs" />
+    <Compile Remove="Migrations\20211003113322_modified UserRole class.cs" />
+    <Compile Remove="Migrations\20211003113322_modified UserRole class.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.19" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />

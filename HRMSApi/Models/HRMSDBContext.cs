@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HRMSApi.Models;
 
 namespace HRMSApi.Models
 {
@@ -14,12 +9,12 @@ namespace HRMSApi.Models
 
         }
 
-        public DbSet<Flat> Flats { get; set; }
-
+        public DbSet<HRMSApi.Models.Flat> Flats { get; set; }
         public DbSet<HRMSApi.Models.Resident> Residents { get; set; }
-
         public DbSet<HRMSApi.Models.ResidentFlat> ResidentFlats { get; set; }
-
         public DbSet<HRMSApi.Models.Rent> Rents { get; set; }
+        public DbSet<HRMSApi.Models.User> Users { get; set; }
+        public DbSet<HRMSApi.Models.Role> Roles { get; set; }
+        public DbSet<HRMSApi.Models.UserRole> UserRoles { get; set; }
     }
 }
