@@ -19,8 +19,7 @@ namespace HRMSApi.Controllers
         {
             _context = context;
         }
-
-        // GET: api/ResidentFlats
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ResidentFlat>>> GetResidentFlat()
         {
@@ -30,7 +29,6 @@ namespace HRMSApi.Controllers
                 .ToListAsync();
         }
 
-        // GET: api/ResidentFlats/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ResidentFlat>> GetResidentFlat(int id)
         {
@@ -47,10 +45,7 @@ namespace HRMSApi.Controllers
 
             return residentFlat;
         }
-
-        // PUT: api/ResidentFlats/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+     
         [HttpPut("{id}")]
         public async Task<IActionResult> PutResidentFlat(int id, ResidentFlat residentFlat)
         {
@@ -79,10 +74,7 @@ namespace HRMSApi.Controllers
 
             return NoContent();
         }
-
-        // POST: api/ResidentFlats
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+      
         [HttpPost]
         public async Task<ActionResult<ResidentFlat>> PostResidentFlat(ResidentFlat residentFlat)
         {
@@ -91,8 +83,7 @@ namespace HRMSApi.Controllers
 
             return CreatedAtAction("GetResidentFlat", new { id = residentFlat.Id }, residentFlat);
         }
-
-        // DELETE: api/ResidentFlats/5
+      
         [HttpDelete("{id}")]
         public async Task<ActionResult<ResidentFlat>> DeleteResidentFlat(int id)
         {

@@ -19,15 +19,13 @@ namespace HRMSApi.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Residents
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Resident>>> GetResident()
         {
             return await _context.Residents.ToListAsync();
         }
-
-        // GET: api/Residents/5
+       
         [HttpGet("{id}")]
         public async Task<ActionResult<Resident>> GetResident(int id)
         {
@@ -40,10 +38,7 @@ namespace HRMSApi.Controllers
 
             return resident;
         }
-
-        // PUT: api/Residents/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+    
         [HttpPut("{id}")]
         public async Task<IActionResult> PutResident(int id, Resident resident)
         {
@@ -72,20 +67,30 @@ namespace HRMSApi.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Residents
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+      
         [HttpPost]
         public async Task<ActionResult<Resident>> PostResident(Resident resident)
-        {
-            _context.Residents.Add(resident);
+        {           
+            _context.Residents.Add(resident);            
+            await _context.SaveChangesAsync();
+
+            User user = new User()
+            {
+                UserName = resident.ContactNo,
+                Password = "12345",
+                ResidentId = resident.Id,
+                CreateBy = "Admin",
+                CreateDate = System.DateTime.Now,
+                UpdateBy = "",
+                UpdateDate = null,
+                Deleted = false
+            };
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetResident", new { id = resident.Id }, resident);
         }
-
-        // DELETE: api/Residents/5
+    
         [HttpDelete("{id}")]
         public async Task<ActionResult<Resident>> DeleteResident(int id)
         {
