@@ -39,11 +39,15 @@ namespace HRMSApi.Controllers
 
                 if (user != null)
                 {
-                    var token = GenerateJwtToken(user).Result;
-
-                    if (token != null)
+                    //var token = GenerateJwtToken(user).Result;
+                    var obj = new
                     {
-                        return Ok(token);
+                        token = GenerateJwtToken(user).Result                     
+                    };
+
+                    if (obj != null)
+                    {
+                        return Ok(obj);
                     }
                 }                
             }
