@@ -38,8 +38,7 @@ namespace HRMSApi.Controllers
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == model.UserName && u.Password == model.Password);
 
                 if (user != null)
-                {
-                    //var token = GenerateJwtToken(user).Result;
+                {                    
                     var obj = new
                     {
                         token = GenerateJwtToken(user).Result                     
