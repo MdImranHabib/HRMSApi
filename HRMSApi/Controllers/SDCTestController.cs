@@ -24,11 +24,21 @@ namespace HRMSApi.Controllers
         [HttpPost]
         public async Task<ActionResult> PostItemData(ItemData model)
         {
+            var msg = "";
             List<ItemData> list = new List<ItemData>();
 
             list.Add(model);
-            var conStatus = sdcservice.SendConnection("192.168.2.141");
-            var response = sdcservice.doInvoice(list, "05-25-01-616", "01682616727", "192.168.2.141");
+
+            try
+            {
+                var conStatus = sdcservice.SendConnection("192.168.2.141");
+                var response = sdcservice.doInvoice(list, "05-25-01-616", "01682616727", "192.168.2.141");
+                msg = response.invoiceNo;
+            }
+            catch(Exception ex)
+            {
+                msg = ex.Message;
+            }            
 
             //var res = new SDCResponseData()
             //{
@@ -40,7 +50,7 @@ namespace HRMSApi.Controllers
             //    Code = response.code
             //};      
 
-            return Ok(response.invoiceNo);        
+            return Ok(msg);        
         }
 
         
