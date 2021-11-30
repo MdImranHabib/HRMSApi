@@ -30,5 +30,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="sdctool">
+      <HintPath>..\sdctool.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>

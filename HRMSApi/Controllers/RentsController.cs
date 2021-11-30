@@ -77,7 +77,9 @@ namespace HRMSApi.Controllers
             _context.Rents.Add(rent);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRent", new { id = rent.Id }, rent);
+            var response = await _context.Rents.Include(r => r.Flat).SingleOrDefaultAsync(r => r.Id == rent.Id);
+            return Ok(response);
+            //return CreatedAtAction("GetRent", new { id = rent.Id }, rent);
         }
     
         [HttpDelete("{id}")]
